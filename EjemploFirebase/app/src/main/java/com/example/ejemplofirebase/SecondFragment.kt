@@ -1,5 +1,7 @@
 package com.example.ejemplofirebase
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.util.Log
@@ -46,8 +48,10 @@ class SecondFragment : Fragment(),RecycledViewAdapter.OnNotaClickListener {
             }
         }
         button_out.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val pref: SharedPreferences.Editor = requireActivity().getSharedPreferences(getString(R.string.prefs_name), Context.MODE_PRIVATE).edit().clear()
+            pref.apply()
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-            println("logount")
         }
         list = ArrayList()
         cargarNotas()

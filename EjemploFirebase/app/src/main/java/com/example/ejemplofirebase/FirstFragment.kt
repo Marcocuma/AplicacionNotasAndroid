@@ -59,8 +59,6 @@ class FirstFragment : Fragment() {
         estaIniciada()
         FirebaseAuth.getInstance().addAuthStateListener {
             mGoogleSignInClient.signOut()
-            val pref: SharedPreferences.Editor = requireActivity().getSharedPreferences(getString(R.string.prefs_name), Context.MODE_PRIVATE).edit().clear()
-            pref.apply()
         }
     }
     private fun signIn() {
